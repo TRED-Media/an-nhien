@@ -1,9 +1,11 @@
--- Run after 002_repeatable_actions.sql. All fixtures and earned points roll back.
+-- Run after the market_economy migration. All fixtures and earned points roll back.
 begin;
 insert into auth.users(id,aud,role,email,raw_user_meta_data) values
 ('00000000-0000-4000-8000-000000000032','authenticated','authenticated','v32-qa@example.invalid','{"display_name":"QA Actions"}');
 select set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000000032',true);
 set local role authenticated;
+select public.game_economy('character','{"gender":"male","career":"photo"}');
+select public.game_economy('awaken');
 do $$ declare event uuid:=gen_random_uuid(); result jsonb;begin
  result:=public.record_activity('chant',event);
  if (result->>'xp')::int<>1 then raise exception 'First tap must earn 1 XP';end if;

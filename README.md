@@ -101,3 +101,45 @@ Mở một hoạt động để vào màn hình riêng. Vuốt xuống lần chu
 3. Kiểm tra đăng ký bằng tài khoản do người dùng kiểm soát: nhận session ngay và vào game. Client tự chuyển sang game khi đăng ký thành công; nếu server vẫn yêu cầu email, báo đúng cấu hình còn thiếu.
 
 Migration `repeatable_activity_actions` đã áp dụng trên project `luqduzgcakwalsunbtuw`; `verify_actions.sql` đạt kiểm tra +1 XP, chơi liên tục, gửi lại không cộng trùng và bảo vệ XP. Auth settings đã xác minh `mailer_autoconfirm: true` sau khi chủ project tắt Confirm email. Khách lưu tại máy, tài khoản thật dùng RPC mới; nếu RPC chưa có hoặc mất mạng, giao diện báo XP chưa lưu và cho thử lại, không cộng điểm giả vào hồ sơ. Hàng đợi tài khoản lưu cục bộ theo user để thử lại sau tải lại. Gửi lại giữ nguyên UUID để không cộng điểm hai lần.
+
+
+## Ver 5 — Chợ An Nhiên & Vườn vui (2D)
+
+- 11 nghề, thêm **Designer sửa lần cuối** với bảng vẽ và bút.
+- Chưa quy y được đi sân chùa, chợ và vườn, bắt cá/quét lá/lần chuỗi cùng 10 hoạt động mới. Chưa được vào chính điện hoặc làm nghi thức trong chùa.
+- 10 sạp dùng chung giữa các tài khoản thật; mỗi người giữ 1 sạp, 1 loại hàng/sạp. Hàng đặt lên sạp được trừ khỏi túi và giữ riêng. Người bán tự chọn giá 1–10.000 Công Đức/món, tối đa 999 món/lần bày.
+- Chỉ người chưa quy y được bán. Mọi người đều có thể mua trừ chính chủ sạp. Quy y trả toàn bộ hàng tồn, giải phóng sạp và mở chính điện. Sạp hết hạn sau 48 giờ sẽ trả hàng về túi khi chợ được làm mới.
+- Khách có túi đồ và chợ thử riêng trên trình duyệt. Cần đăng nhập để giao dịch với người chơi thật; không dùng người mua giả hay tự bán cho chính mình.
+
+| Hoạt động mới | Vật phẩm | Thao tác |
+| --- | --- | --- |
+| Chăm vườn hoa | Bó hoa | Vuốt xuống |
+| Nuôi heo tròn | Phân hữu cơ | Chạm |
+| Cho gà ăn | Trứng gà | Chạm |
+| Tarot đầu ngõ (giải trí) | Thiệp tarot vui | Vuốt xuống |
+| Livestream chốt đơn (mô phỏng) | Phiếu chốt đơn | Chạm |
+| Pha trà sen | Trà sen | Vuốt xuống |
+| Làm bánh chay | Bánh chay | Chạm |
+| Vẽ tranh dạo | Tranh nhỏ | Vuốt |
+| May túi vải | Túi vải | Vuốt |
+| Tái chế giấy | Giấy tái chế | Vuốt xuống |
+
+Bắt cá cho cá, quét sân cho lá, lần chuỗi cho chuỗi bồ đề. Mỗi thao tác thành công vẫn +1 XP và thêm 1 vật phẩm tương ứng.
+
+### Tiền và tiến trình
+
+- **XP tổng** giữ nguyên và tăng bởi nhiệm vụ, bán hàng và quà ngày; không bị tiêu khi mua.
+- **Ví Công Đức**: mỗi 10 XP nhiệm vụ nhận 1 đơn vị. Mua/bán chuyển đúng số tiền giữa hai ví; không tạo tiền mới. Khi cập nhật, ví cũ được khởi tạo một lần bằng `floor(XP cũ / 10)`.
+- **XP buôn bán**: mỗi món bán cho người khác +1 XP tổng và +1 XP buôn bán; không tính vào XP nhiệm vụ, nên không tạo tiền. Mỗi 10 XP buôn bán tăng 1 **Tâm Ma**. Mua về không được XP; bán lại vẫn theo luật này.
+- **Công đức tu tập**: giữ nguyên giá trị cũ và dùng để lên bậc. Sau quy y, mỗi 10 thao tác làm giảm 1 Tâm Ma trước; khi Tâm Ma bằng 0 mới tăng 1 công đức tu tập. Tiêu ví không hạ bậc.
+- Quà ngày +50 XP tổng, không tạo tiền hoặc tăng công đức tu tập.
+
+### Cơ sở dữ liệu và kiểm tra
+
+Áp dụng migration `supabase/migrations/20261030163658_market_economy.sql` sau hai migration trước. Migration tạo ví, kho, trạng thái quy y do server quản lý, 10 sạp cố định và nhật ký giao dịch chống xử lý lặp. Các RPC công khai chạy SECURITY INVOKER; quyền ghi được đóng gói trong `game_private.action`, kiểm tra người dùng, số lượng, số dư, quyền sạp và phiên bản hàng. Các RPC thưởng v2 bị thu hồi để tránh bỏ qua luật mới. Client không dùng user_metadata để quyết định quyền bán hay trạng thái quy y.
+
+- `npm run check`
+- `node --test tests/*.test.mjs`
+- `supabase/verify_market.sql`: test giao dịch hai bên, chống mua chính mình, ví/stock không đủ, idempotency, quy y, Tâm Ma, quyền ghi và trả hàng; mọi fixture rollback.
+- `supabase/verify_actions.sql`: kiểm tra thao tác lặp với hồ sơ đã quy y.
+- Kiểm tra browser đã bao gồm Designer, 10 hoạt động, sạp, túi, tải lại, quy y và hai tài khoản tranh mua món hàng cuối; chỉ một giao dịch thành công.
