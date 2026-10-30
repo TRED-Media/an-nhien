@@ -1,9 +1,9 @@
 {
   "name": "an-nhien-chua-online",
   "private": true,
-  "version": "3.2.0",
+  "version": "4.0.0",
   "scripts": {
     "start": "node start.cjs",
-    "check": "node --check dist/game.js && node --check dist/scene.js && node --check dist/cloud.js && node --check dist/login.js && node --check dist/journey.js && node --check dist/hall.js && node --check dist/activities.js && node --check dist/rewards.js && node --check dist/auth.js"
+    "check": "node --check dist/game.js && node --check dist/scene.js && node --check dist/cloud.js && node --check dist/login.js && node --check dist/journey.js && node --check dist/hall.js && node --check dist/activities.js && node --check dist/rewards.js && node --check dist/auth.js && node --check dist/models3d.js && node --check dist/world3d.js && node --check dist/activity3d.js"
   }
 }
