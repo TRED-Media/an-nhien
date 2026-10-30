@@ -8,6 +8,7 @@ export const careers = [
  ['seller','📣','Chiến thần chốt đơn','Một câu cuối thôi… thêm ba tiếng.','#e58176','megaphone'],
  ['office','☕','Dân văn phòng chạy deadline','Excel mở, tâm hồn đi vắng.','#78a9bd','coffee'],
  ['broker','🏠','Cò đất hệ tâm linh','Miếng này view đẹp, nhìn ra bình an.','#b4976a','sign'],
+ ['designer','🖌️','Designer sửa lần cuối','Khách nói đơn giản thôi… rồi gửi 36 ý.','#8ca5bd','tablet'],
  ['chef','🍳','Đầu bếp review dạo','Nêm chút muối, kể chuyện hơi mặn.','#eee6d0','chef']
 ].map(([id,icon,name,description,color,prop])=>({id,icon,name,description,color,prop}));
 export const careerFor=id=>careers.find(c=>c.id===id)||careers[0];
