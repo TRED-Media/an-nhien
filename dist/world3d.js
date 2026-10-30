@@ -169,7 +169,7 @@ export class TempleWorld3D {
       this.camera,
     );
     const hits = this.ray.intersectObjects(
-      this.pickables.filter((p) => p.parent.visible).map((p) => p.g),
+      [...this.pickables.filter((p) => p.parent.visible).map((p) => p.g), ...[...this.actors].filter(([id,item])=>id!=="self"&&item.g.visible).map(([,item])=>item.g)],
       true,
     );
     if (hits.length) {
@@ -424,6 +424,7 @@ export class TempleWorld3D {
     }
     item.g.visible = id === "self" || (p.map || "courtyard") === this.map;
     item.g.position.set(wx(p.x), 0, wz(p.y));
+    item.g.userData.pick={x:p.x,y:p.y};
     animateAvatar(item.g, p, this.time);
     return item.g;
   }
