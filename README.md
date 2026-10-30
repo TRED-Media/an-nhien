@@ -77,3 +77,15 @@ Chọn Nam/Nữ và một trong 10 nghề có phục trang/phụ kiện riêng. 
 Khách lưu nhân vật/lễ nhập môn trên thiết bị; tài khoản lưu trong Supabase Auth user metadata (không cần migration). Công đức tài khoản vẫn lấy từ các RPC hiện có, không lấy từ metadata. Ngoại hình được gửi kèm Realtime cho bạn cùng phòng. Chưa xác minh luồng lưu metadata với tài khoản Supabase thật trong lần cập nhật này.
 
 Kiểm tra luật: `node --test tests/journey.test.mjs`.
+
+## Ver 3.1 — chính điện và hoạt cảnh
+
+Chạm tòa chùa hoặc nút **Vào chính điện** để đi qua cửa vào map nội thất. Nút **Ra sân** và cửa cuối sảnh đưa về sân. Sảnh có ánh vàng ấm, ba tượng Phật, bệ sen, nến, cửa gỗ và bốn cột chạm hoa văn; thời tiết ngoài sân không hiển thị trong nhà.
+
+- **Cơm chay:** chạm bát/nút 5 lần, cách nhau 1,5 giây; nhân vật nâng bát, gắp cơm.
+- **Quỳ lạy:** giữ đệm/nút 2,4 giây cho mỗi lạy, thả tay giữa ba lạy.
+- **Thiền nghe pháp:** giữ đệm/nút 24 giây, có thể nghỉ rồi tiếp tục; lời giảng chuyển theo thời gian an trú. Bật đọc bằng Web Speech của thiết bị nếu muốn nghe, chất lượng giọng Việt phụ thuộc trình duyệt/giọng đã cài. Lời giảng là nội dung ngắn viết cho game.
+
+Ba sinh hoạt trong sảnh là trải nghiệm thư giãn, không cộng XP/công đức. Các hoạt động ngoài sân vẫn dùng phần thưởng và RPC Supabase hiện có. Không cần migration cho bản cập nhật này.
+
+Nhân vật có hoạt cảnh cúi chào, cầm hương, nghiêng giỏ cá, gõ mõ, lần chuỗi, quét sân, ngồi thở, ăn cơm và quỳ lạy. Realtime gửi map và trạng thái động tác; chỉ hiển thị bạn cùng map, vẫn dùng phòng được bảo vệ hiện có.
