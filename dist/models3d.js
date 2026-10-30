@@ -306,6 +306,7 @@ export function woodfish(p, x = 0, y = 0, z = 0) {
 }
 export function beads(p, x = 0, y = 0, z = 0, r = 0.42) {
   const g = group(p, x, y, z);
+  ring(g,0,0,0,r,.014,"#d3af73").rotation.x=Math.PI/2;
   for (let i = 0; i < 18; i++) {
     const a = (i * Math.PI) / 9;
     ball(

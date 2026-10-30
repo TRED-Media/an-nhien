@@ -62,9 +62,9 @@ export class ActivityStage3D {
     this.fishes = [];
     if (id === "beads") {
       this.beadRing = beads(this.object, 0, 0.85, 0, 1.05);
-      this.beadRing.scale.setScalar(1.8);
+      this.beadRing.scale.setScalar(1.1);
       this.beadRing.rotation.x = 0.65;
-      this.beadRing.children.forEach((b) => b.scale.multiplyScalar(1.5));
+      this.beadRing.children.filter(b=>b.geometry?.type==="SphereGeometry").forEach((b) => b.scale.multiplyScalar(1.5));
     }
     if (id === "chant") {
       table(this.object, 0, 0, 2.7);
