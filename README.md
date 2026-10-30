@@ -58,3 +58,22 @@ Bản V1 cũ được giữ trong `legacy-v1/` để tham khảo, không phục 
 https://an-nhien-chua-online.thinhnq-photography.chatgpt.site
 
 Đã xuất bản owner-private: chỉ chủ Site đang có quyền truy cập. Muốn người chơi ngoài vào cần thay đổi quyền chia sẻ khi chủ app yêu cầu. Supabase project vẫn độc lập và đã hoạt động.
+
+## Ver 3 — nhân vật và hành trình
+
+Chọn Nam/Nữ và một trong 10 nghề có phục trang/phụ kiện riêng. Gặp trụ trì Thích An Hòa bên trái sân để làm lễ giác ngộ, nhận áo tu rồi mở các hoạt động. Nghề cũ được giữ trong hồ sơ.
+
+| Công đức tích lũy | Tăng | Ni |
+| --- | --- | --- |
+| 0 + lễ nhập môn | Chú tiểu / Sa-di | Sa-di-ni |
+| 200 | Đại Đức | Sư Cô |
+| 600 | Thượng Tọa | Ni Sư |
+| 1.500 | Hòa Thượng | Ni Trưởng (Sư Bà) |
+| 3.000 | Trưởng lão Hòa Thượng | Giữ bậc Ni Trưởng |
+| 6.000 | Pháp chủ | Pháp chủ |
+
+Đủ điểm sẽ tự thăng bậc, không trừ điểm; thanh tiến độ HUD hiển thị khoảng cách đến bậc tiếp theo. Danh xưng rút gọn cho game, không dùng tuổi đời/tuổi đạo. Pháp chủ là danh hiệu cá nhân, không cấp quyền admin. Người chơi cũ giữ nguyên XP/công đức và chọn nhân vật khi vào ver 3.
+
+Khách lưu nhân vật/lễ nhập môn trên thiết bị; tài khoản lưu trong Supabase Auth user metadata (không cần migration). Công đức tài khoản vẫn lấy từ các RPC hiện có, không lấy từ metadata. Ngoại hình được gửi kèm Realtime cho bạn cùng phòng. Chưa xác minh luồng lưu metadata với tài khoản Supabase thật trong lần cập nhật này.
+
+Kiểm tra luật: `node --test tests/journey.test.mjs`.

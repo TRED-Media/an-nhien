@@ -1,1 +1,9 @@
-{"name":"an-nhien-chua-online","private":true,"version":"2.0.0","scripts":{"start":"node start.cjs","check":"node --check dist/game.js && node --check dist/scene.js && node --check dist/cloud.js && node --check dist/login.js"}}
+{
+  "name": "an-nhien-chua-online",
+  "private": true,
+  "version": "3.0.0",
+  "scripts": {
+    "start": "node start.cjs",
+    "check": "node --check dist/game.js && node --check dist/scene.js && node --check dist/cloud.js && node --check dist/login.js && node --check dist/journey.js"
+  }
+}

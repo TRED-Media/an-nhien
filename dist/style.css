@@ -3,3 +3,7 @@
 /* Keep instructions above interactive objects, including leaves near the bottom. */
 .task-hud{top:145px;bottom:auto}
 @media(max-width:600px){.task-hud{top:139px;bottom:auto;width:284px;left:44%;padding:12px 14px}.task-hud p{font-size:9px}}
+
+/* Version 3 character creation */
+.gender-options,.career-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}.gender-options button,.career-grid button{border:1px solid #d7dfcf;border-radius:14px;background:#faf8ee;color:#355b4b;padding:12px;text-align:left;font:inherit;cursor:pointer}.gender-options button[aria-pressed=true],.career-grid button[aria-pressed=true]{background:#e1efdb;border:2px solid #477c61;box-shadow:0 2px 8px #315c4415}.career-grid button span{display:block;font-size:26px;margin-bottom:6px}.character-preview{display:flex;align-items:center;background:#f0eddd;border-radius:18px;padding:8px;gap:10px}.character-preview canvas{width:120px;height:120px;flex-shrink:0}.character-preview p{font-size:13px;margin-bottom:0}.rank-list .list-row{gap:10px}.rank-list strong{white-space:nowrap;font-size:12px}.rank-list b{font-size:14px}#characterError,#ceremonyError{color:#a34539}.player-hud small{max-width:170px;white-space:normal}button:focus-visible{outline:3px solid #d79840;outline-offset:3px}
+.game-page .character-preview canvas{position:static;inset:auto;display:block;width:120px;height:120px;touch-action:auto}
