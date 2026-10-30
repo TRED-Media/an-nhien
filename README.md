@@ -1,6 +1,6 @@
-# Chùa Online — An Nhiên 2.5D
+# Chùa Online — An Nhiên 3D (v4)
 
-Canvas game mobile dọc. Các phần hoạt động trong sân, không còn trang dashboard hoạt động của V1.
+Game 3D WebGL trên trình duyệt, hỗ trợ điện thoại và máy tính. Sân chùa, chính điện, nhân vật, tạo hình nghề nghiệp và cả 9 hoạt động đều dùng mô hình 3D. Tài khoản, XP, công đức và Supabase Realtime tiếp tục sử dụng dữ liệu hiện có.
 
 ## Chạy
 
@@ -16,16 +16,20 @@ Không mở index.html bằng file://: bản mới dùng ES modules và đăng n
 
 ## Cách chơi
 
-- Chạm sân hoặc WASD/mũi tên để di chuyển; nhân vật tìm đường tránh hồ/cây.
-- Chạm lư hương, đến gần rồi kéo 3 nén hương từ khay vào lư.
-- Chạm hồ cá, kéo giỏ xuống mặt nước 3 lần. Cá bơi, có gợn nước.
-- Đến bàn kinh và gõ mõ chậm đủ 8 nhịp. Người chơi tự đọc lời niệm; không thu âm/xác nhận giọng nói.
-- Đến bàn chuỗi rồi vuốt vòng quanh 18 hạt.
-- Đến đệm thiền, giữ tay trên đệm 24 giây, thả để nghỉ.
-- Đến sân lá, kéo chổi qua lá để dọn sạch.
-- Chạm NPC để nhận lời nhắc. Chạm người chơi thật để tới chào.
-- Gửi đèn tâm nguyện ở cây đèn; nội dung chỉ chủ tài khoản đọc được.
-- Thời tiết nắng/gió/mưa/hoàng hôn tự đổi mỗi 75 giây hoặc chọn trong HUD; là mô phỏng, không lấy thời tiết thật.
+- Chạm sân hoặc WASD/mũi tên để đi; nhân vật tìm đường tránh hồ/cột.
+- Chạm vật thể 3D hoặc chọn **Tu tập** để tự đi đến hoạt động.
+- Dùng ↶ / ↷ xoay góc nhìn, + / − phóng to/thu nhỏ, ⌂ đặt lại; máy tính có thể cuộn chuột để zoom.
+- Thắp hương: vuốt lên. Lần chuỗi, thả cá, thiền, lạy Phật và nghe pháp: vuốt xuống.
+- Gõ mõ và ăn chay: chạm vật thể; quét sân: vuốt. Enter/phím cách cũng thực hiện một lượt.
+- Mỗi thao tác hợp lệ +1 XP; không giới hạn lượt. Nhiệm vụ mở toàn màn hình; Escape hoặc Về chùa để đóng.
+- Chạm chùa hoặc Vào chính điện để vào sảnh; nút Ra sân để quay về.
+- Gặp trụ trì làm lễ giác ngộ rồi tăng cấp theo công đức.
+
+### Đồ họa và kiểm tra v4
+
+Three.js **0.170.0** được lưu trực tiếp trong `dist/vendor`, có giấy phép MIT đi kèm, không cần CDN lúc chơi. Mesh hình học và vật liệu được dùng lại, gạch nền dùng InstancedMesh; pixel ratio giới hạn 1.5 và bóng 512px. Nhiệm vụ đang mở tạm ngưng vẽ bản đồ phía sau. Thiết bị không khởi tạo được WebGL sẽ dùng bản Canvas tương thích; dữ liệu người chơi không bị xóa.
+
+`npm run check` và `node --test tests/*.test.mjs` kiểm tra cú pháp, luật thao tác, hàng đợi điểm, cấp bậc và đồng bộ bản đồ. Kiểm tra trình duyệt: cài Playwright trong môi trường kiểm thử rồi chạy `node tests/browser-3d.cjs`; có thể đặt `BASE_URL`, `CHROMIUM_PATH`, `SCREENSHOT_DIR`. Test dùng hồ sơ khách riêng trong browser context, không ghi dữ liệu tài khoản thật.
 
 ## Supabase đã cấu hình
 
