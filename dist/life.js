@@ -26,14 +26,14 @@ export function drawLife() {
   const c = this.ctx;
   c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
   const gradient = c.createLinearGradient(0, 0, 0, this.h);
-  gradient.addColorStop(0, "#cde4d0");
-  gradient.addColorStop(1, "#86b67d");
+  gradient.addColorStop(0, "#91d9da");
+  gradient.addColorStop(1, "#8bc96a");
   c.fillStyle = gradient;
   c.fillRect(0, 0, this.w, this.h);
   c.save();
   c.translate(this.ox, this.oy);
   c.scale(this.scale, this.scale);
-  this.background();
+  
   this.path(
     [
       [-100, 430],
@@ -41,7 +41,7 @@ export function drawLife() {
       [1000, 1400],
       [-100, 1400],
     ],
-    "#a9c78b",
+    "#8bc96a",
   );
   this.tree(100, 425, 0.9, "#418a57");
   this.tree(790, 425, 0.9, "#e79e75");
@@ -53,7 +53,7 @@ export function drawLife() {
       [570, 245],
       [655, 310],
     ],
-    this.map === "market" ? "#bf8058" : "#8da174",
+    "#b96047",
     "#f0d19c",
   );
   this.rounded(410, 340, 80, 85, 8, "#96734c");
@@ -72,7 +72,7 @@ export function drawLife() {
     790,
     830,
     45,
-    this.map === "market" ? "#e1c797" : "#c1ce95",
+    "#8bc96a",
   );
   this.rounded(95, 490, 710, 95, 20, "#386b50", "#e8d5a1");
   this.text(
@@ -156,7 +156,7 @@ export function drawLife() {
     }
   } else
     for (const a of gardenStations) {
-      this.rounded(a.x - 155, a.y - 55, 310, 108, 18, "#f4e6bdcc", "#d5bb83");
+      this.rounded(a.x - 155, a.y - 55, 310, 108, 18, "#8bc96a00", "#8bc96a00");
       drawActivityArt(this, a.id, a.x, a.y - 6, 0.55, this.time, 0);
       this.text(a.title, a.x, a.y + 52, 19, "#3e624a");
     }
