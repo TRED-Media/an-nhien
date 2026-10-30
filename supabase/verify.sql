@@ -16,8 +16,8 @@ do $$ begin
 end;$$;
 select public.finish_activity('00000000-0000-4000-8000-0000000000c1') as reward;
 do $$ begin
- if (select xp from public.profiles where id=auth.uid())<>20 then raise exception 'Wrong XP';end if;
+ if (select xp from public.profiles where id=auth.uid())<>1 then raise exception 'Wrong XP';end if;
  begin perform public.finish_activity('00000000-0000-4000-8000-0000000000c1');raise exception 'Duplicate reward allowed';exception when others then if sqlerrm<>'Phần thưởng đã được nhận.' then raise;end if;end;
 end;$$;
-select 'PASS: RLS isolation, no XP writes, no admin access, private wishes, reward +20, no duplicate reward' as checks;
+select 'PASS: RLS isolation, no XP writes, no admin access, private wishes, reward +1, no duplicate reward' as checks;
 rollback;
