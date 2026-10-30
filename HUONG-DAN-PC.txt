@@ -1,0 +1,11 @@
+AN NHIÊN — MÃ NGUỒN TỪ MAC, 30/10/2026
+
+Giải nén toàn bộ thư mục an-nhien vào D:\workspace\an-nhien hoặc nơi bạn chọn.
+Mở thư mục này trong Codex để sửa tiếp.
+Cài Node.js 22 trở lên, chạy CHAY-TREN-WINDOWS.cmd.
+Mở http://127.0.0.1:5173 và giữ cửa sổ chạy server mở.
+
+Mã nguồn chính: dist/game.js, dist/scene.js, dist/cloud.js, dist/login.js.
+Giữ dist/config.js để dùng backend Supabase hiện có.
+Lịch sử .git được giữ nguyên. Đây là bản sao, chưa tự đồng bộ hai chiều.
+Tiến trình khách ở trình duyệt Mac không đi kèm; tài khoản thật vẫn dùng Supabase hiện có.
