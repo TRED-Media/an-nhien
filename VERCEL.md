@@ -2,11 +2,15 @@
 
 Mã nguồn: https://github.com/TRED-Media/an-nhien
 
+Bản production đã triển khai: https://annhien-six.vercel.app
+
+Vercel project: `annhien` — `prj_TK2gUB4LiZQKU6f2WlFjhM84SGCZ`. Project đã kết nối repository GitHub. Production mở công khai; preview giữ bảo vệ đăng nhập Vercel.
+
 Import repository này trong tài khoản Vercel, chọn framework **Other** và giữ root directory ở gốc repository. `vercel.json` đã cấu hình kiểm tra cú pháp và phục vụ thư mục `dist`.
 
-Tên project mong muốn: `annhien`. Domain `annhien.vercel.app` hiện có website khác sử dụng; chỉ có thể gán nếu tài khoản có quyền quản lý domain này hoặc domain được giải phóng. Không thay thế project khác khi chưa xác định đúng quyền sở hữu.
+Domain `annhien.vercel.app` bị Vercel từ chối với mã `owned-on-other-team`: đã được gán cho project thuộc team khác. Hiện sử dụng domain Vercel cấp tự động `annhien-six.vercel.app`.
 
-Trong Supabase → Authentication → URL Configuration, thêm `https://annhien.vercel.app/index.html` vào Redirect URLs sau khi xác nhận domain được gán. Nếu dùng domain khác, thêm URL tương ứng. Đăng ký và khôi phục mật khẩu phụ thuộc cấu hình này.
+Trong Supabase → Authentication → URL Configuration, thêm `https://annhien-six.vercel.app/index.html` vào Redirect URLs. Đăng ký và khôi phục mật khẩu phụ thuộc cấu hình này; cấu hình Supabase chưa được xác minh trong lần triển khai Vercel này.
 
 ## Tiếp tục chỉnh sửa ver 3
 
