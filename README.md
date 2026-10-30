@@ -94,10 +94,10 @@ Nhân vật có hoạt cảnh cúi chào, cầm hương, nghiêng giỏ cá, gõ
 
 Mở một hoạt động để vào màn hình riêng. Vuốt xuống lần chuỗi, thả cá, thiền và quỳ lạy; vuốt lên dâng hương; vuốt ngang hoặc dọc quét sân; chạm mõ để tụng kinh và chạm bát cơm để ăn chay. Mỗi thao tác đúng cộng **1 XP và 1 công đức**, kể cả sinh hoạt chính điện. Không yêu cầu đủ bộ, không chờ thời gian tối thiểu, không cooldown và không giới hạn số lần. Quà ngày vẫn là phần thưởng riêng, nhận một lần/ngày.
 
-### Cần áp dụng Supabase trước khi đưa ver 3.2 lên production
+### Cấu hình Supabase cho ver 3.2
 
 1. Trong project `luqduzgcakwalsunbtuw`, chạy `supabase/migrations/002_repeatable_actions.sql`. RPC `record_activity` kiểm tra người dùng, hoạt động, quyền bật/tắt và cộng điểm cố định phía server; UUID mỗi thao tác chống cộng trùng khi gửi lại. Không cho client gửi số XP.
 2. Trong Supabase Authentication → Sign In / Providers → Email, tắt **Confirm email**. Đây là cấu hình Auth phía Supabase, không thể bỏ qua bằng public key hay sửa JavaScript.
 3. Kiểm tra đăng ký bằng tài khoản do người dùng kiểm soát: nhận session ngay và vào game. Client tự chuyển sang game khi đăng ký thành công; nếu server vẫn yêu cầu email, báo đúng cấu hình còn thiếu.
 
-Khách đã dùng luật mới và lưu tại máy. Tài khoản thật cần migration trước; nếu RPC chưa có hoặc mất mạng, giao diện báo XP chưa lưu và cho thử lại, không cộng điểm giả vào hồ sơ. Hàng đợi tài khoản lưu cục bộ theo user để thử lại sau tải lại. Gửi lại giữ nguyên UUID để không cộng điểm hai lần.
+Migration `repeatable_activity_actions` đã áp dụng trên project `luqduzgcakwalsunbtuw`; `verify_actions.sql` đạt kiểm tra +1 XP, chơi liên tục, gửi lại không cộng trùng và bảo vệ XP. Auth settings đã xác minh `mailer_autoconfirm: true` sau khi chủ project tắt Confirm email. Khách lưu tại máy, tài khoản thật dùng RPC mới; nếu RPC chưa có hoặc mất mạng, giao diện báo XP chưa lưu và cho thử lại, không cộng điểm giả vào hồ sơ. Hàng đợi tài khoản lưu cục bộ theo user để thử lại sau tải lại. Gửi lại giữ nguyên UUID để không cộng điểm hai lần.
