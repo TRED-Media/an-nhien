@@ -1,0 +1,6 @@
+export const worldArt=(typeof Image!=='undefined'?new Image():{});worldArt.src='art/temple-world.png';
+const atlas=(typeof Image!=='undefined'?new Image():{});atlas.src='art/characters.png';
+const order=['photo','driver','boss','collector','tough','streamer','seller','office','broker','chef','designer'];
+export function drawAvatar(scene,p){if(!atlas.complete||!atlas.naturalWidth)return false;const female=p.character?.gender==='female',idx=p.character?.awakened?11:Math.max(0,order.indexOf(p.character?.career)),col=idx%6,row=Math.floor(idx/6)+(female?2:0),cw=atlas.naturalWidth/6,ch=atlas.naturalHeight/4,c=scene.ctx;const walk=p.moving?Math.sin(scene.time*12):0,age=(Date.now()-(p.animationStarted||0))/1000,bow=['bow','prostrate'].includes(p.action),sit=['meditate','sermon','meal','teach'].includes(p.action);c.save();c.translate(p.x,p.y);c.rotate(p.moving?walk*.025:0);if(bow)c.rotate(Math.sin(Math.min(age,2)*Math.PI/2)*.12);scene.ellipse(0,0,24,7,'#3d563a33');const h=p.preview?120:108,w=h*cw/ch;c.drawImage(atlas,col*cw,row*ch,cw,ch,-w/2,-h+(sit?18:0)-Math.abs(walk)*3,w,h*(sit?.86:1));if(!p.preview&&p.name)scene.text(p.name,0,18,16,'#315740');c.restore();return true;}
+
+export const hallArt=(typeof Image!=='undefined'?new Image():{});hallArt.src='art/temple-hall.png';
