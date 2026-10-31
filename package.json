@@ -4,6 +4,6 @@
   "version": "5.0.0",
   "scripts": {
     "start": "node start.cjs",
-    "check": "node --check dist/game.js && node --check dist/scene.js && node --check dist/cloud.js && node --check dist/login.js && node --check dist/journey.js && node --check dist/hall.js && node --check dist/activities.js && node --check dist/rewards.js && node --check dist/auth.js && node --check dist/economy.js && node --check dist/life.js && node --check dist/market-ui.js"
+    "check": "node --check dist/game.js && node --check dist/scene.js && node --check dist/cloud.js && node --check dist/login.js && node --check dist/journey.js && node --check dist/hall.js && node --check dist/activities.js && node --check dist/rewards.js && node --check dist/auth.js && node --check dist/economy.js && node --check dist/life.js && node --check dist/market-ui.js && node --check dist/activity-art.js"
   }
 }

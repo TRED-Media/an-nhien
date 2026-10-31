@@ -18,7 +18,7 @@ export function lifeBlocked(map, x, y) {
   return (
     map === "market" &&
     marketSpots.some(
-      (s) => Math.abs(x - s.x) < 51 && y > s.y - 36 && y < s.y + 24,
+      (s) => Math.abs(x - s.x) < 30 && y > s.y - 25 && y < s.y + 14,
     )
   );
 }
