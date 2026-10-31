@@ -1,3 +1,4 @@
+import {compactUI} from './compact-ui.js';
 import {joystick} from './joystick.js';
 import {panorama} from './panorama.js';
 import {MarketUI} from './market-ui.js';
@@ -71,3 +72,5 @@ function startHallTask(id){return startTask(id);}
 $('#enterHall').onclick=()=>{if(task?.finishing)return;if(task)cancelTask();walkTo({x:450,y:650},{type:'enter',name:'chính điện'});};
 document.querySelectorAll('[data-hall-task]').forEach(b=>b.onclick=()=>{if(task?.finishing)return;if(task)cancelTask();const s=hallStations.find(s=>s.id===b.dataset.hallTask);walkTo(s.stand,{id:s.id,name:s.name});});
 window.addEventListener('pagehide',()=>{market.destroy();stopTeaching();room?.close();scene.destroy()});init();
+
+compactUI();

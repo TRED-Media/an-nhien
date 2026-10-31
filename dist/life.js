@@ -9,9 +9,9 @@ export const gardenStations = newActivities.map((a, i) => ({
 }));
 export const marketSpots = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
-  x: 150 + (i % 5) * 150,
-  y: i < 5 ? 760 : 1040,
-  stand: { x: 150 + (i % 5) * 150, y: i < 5 ? 835 : 1115 },
+  x: [1370,1510,1650,1790,1930][i%5]*3000/2048-1950,
+  y: 80+(i<5?397:580)*1125/768,
+  stand: { x: [1370,1510,1650,1790,1930][i%5]*3000/2048-1950, y: i < 5 ? 835 : 1115 },
 }));
 export function lifeBlocked(map, x, y) {
   if (x < 90 || x > 870 || y < 620 || y > 1240) return true;
